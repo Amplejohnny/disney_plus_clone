@@ -40,6 +40,7 @@ const Home = () => {
 
     fetchMovies();
   }, [dispatch, userName]);
+  
 
   return (
     <Container>

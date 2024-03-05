@@ -1,7 +1,7 @@
-// firebase.js
+//Firebase App (the core Firebase SDK) configuration
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -20,18 +20,25 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 
-//Detect auth state change
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    console.log("User is signed in");
-    const uid = user.uid;
-  } else {
-    // User is signed out
-    console.log("User is signed out");
-  }
-});
 
 export { auth, provider, storage, db };
 export default firebaseApp;
+
+// const addMoviesToFirestore = async (moviesData) => {
+//   try {
+//     // Loop through each movie and add it to Firestore
+//     for (const movie of moviesData) {
+//       // Add the movie to Firestore
+//       await addDoc(collection(db, "movies"), movie);
+//     }
+//     console.log("Movies data added to Firestore successfully!");
+//   } catch (error) {
+//     console.error("Error adding movies data to Firestore: ", error);
+//   }
+// };
+
+// // Call the function to add movies data to Firestore
+// const moviesData = [
+//   // Paste the provided movies data here
+// ];
+// addMoviesToFirestore(moviesData);
