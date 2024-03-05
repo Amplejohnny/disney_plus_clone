@@ -20,12 +20,10 @@ const Home = () => {
     const fetchMovies = async () => {
       try {
         const snapshot = await getDocs(collection(db, "movies"));
-        console.log("snapshot:", snapshot);
         const movies = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        console.log("movies:", movies); 
 
         const categorizedMovies = {
           recommend: movies.filter((movie) => movie.type === "recommend"),
